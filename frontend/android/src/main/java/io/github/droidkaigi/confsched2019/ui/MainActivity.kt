@@ -130,6 +130,13 @@ class MainActivity : DaggerAppCompatActivity() {
         }
     }
 
+    override fun onBackPressed() {
+        when (binding.drawerLayout.isDrawerOpen(binding.navView)) {
+            true -> binding.drawerLayout.closeDrawer(binding.navView)
+            false -> super.onBackPressed()
+        }
+    }
+
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu_toolbar, menu)
         return true
